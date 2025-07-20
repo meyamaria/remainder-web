@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Drinking Water Notification</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        min-height: 100vh;
+      }
+      .container {
+        margin-top: 60px;
+        max-width: 500px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        padding: 32px;
+      }
+      .form-label {
+        font-weight: 500;
+      }
+      .btn-primary {
+        background: #00c6fb;
+        border: none;
+      }
+      .btn-primary:hover {
+        background: #005bea;
+      }
+      .water-list {
+        margin-top: 30px;
+      }
+      .water-list li {
+        background: #e0f7fa;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        padding: 10px 16px;
+        font-size: 1.1em;
+      }
+      .back-link {
+        display: block;
+        margin-top: 30px;
+        text-align: center;
+        color: #005bea;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="mb-4 text-center">💧 Drinking Water Notification</h2>
+      <form method="POST" action="/set_water_notification">
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" name="name" class="form-control" required />
+        </div>
+        <div class="mb-3 row">
+          <div class="col-4">
+            <label class="form-label">Hour</label>
+            <input
+              type="number"
+              name="hour"
+              min="1"
+              max="12"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="col-4">
+            <label class="form-label">Minute</label>
+            <input
+              type="number"
+              name="minute"
+              min="0"
+              max="59"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="col-4">
+            <label class="form-label">AM/PM</label>
+            <select name="ampm" class="form-select">
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mt-3">
+          Set Notification
+        </button>
+      </form>
+      <h4 class="mt-5 mb-3 text-center">Your Water Notifications</h4>
+      <ul class="water-list list-unstyled">
+        {% for entry in water_data %}
+        <li>
+          🚰 <strong>{{ entry.name }}</strong> -
+          <span>{{ entry.water_time }}</span>
+        </li>
+        {% else %}
+        <li class="text-muted text-center">No notifications set yet.</li>
+        {% endfor %}
+      </ul>
+      <a href="/" class="back-link">← Back to Sleep Page</a>
+    </div>
+  </body>
+</html>

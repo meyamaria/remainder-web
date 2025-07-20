@@ -58,11 +58,8 @@
     <p>Powered by <a href="https://www.python.org" target="_blank">Python</a> & Flask</p>
   </div>
 
-  <!-- ✅ Safe JSON injection -->
-  <script>
-    const userData = {{ user_data | tojson | safe }};
-    console.log("User Data:", userData);
-  </script>
+  <!-- Safely inject JSON data -->
+  
   <script src="{{ url_for('static', filename='notifications.js') }}"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@ body {
   left: -120px;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, #6366f1 0%, transparent 70%);
+  background: radial-gradient(circle, #63e5f1 0%, transparent 70%);
   opacity: 0.13;
   z-index: 0;
   pointer-events: none;

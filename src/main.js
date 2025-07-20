@@ -22,3 +22,26 @@ document.querySelector('#app').innerHTML = `
 `
 
 setupCounter(document.querySelector('#counter'))
+// ...existing code...
+
+// Request notification permission on page load
+if ("Notification" in window) {
+  if (Notification.permission === "default") {
+    Notification.requestPermission();
+  }
+}
+
+// Example function to show a notification
+function showNotification(title, body) {
+  if (Notification.permission === "granted") {
+    new Notification(title, { body });
+  }
+}
+
+// Add a button to trigger a test notification
+const notifyBtn = document.createElement('button');
+notifyBtn.textContent = "Test Notification";
+notifyBtn.onclick = () => showNotification("Reminder", "This is your desktop notification!");
+document.querySelector('.card').appendChild(notifyBtn);
+
+// ...existing code...
